@@ -1,6 +1,6 @@
 # create a games class
 
-class GHames ():
+class Games ():
 
     def __init__(self, game_name, user_name, phone_num, price, location, lat, long):
         self.game_name = game_name
