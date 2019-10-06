@@ -14,9 +14,9 @@ class Games ():
 
     def write_a_game_to_file(self):
         try:
-            with open('write_game_listings.txt', 'a') as opened_file:
+            with open('game_listings.txt', 'w') as opened_file:
                 opened_file.write(
-                    self.game_name + self.user_name + self.phone_num + self.price + self.location + self.lat + self.long + '\n')
+                    "Game Name: " + self.game_name + ", " + "User Name: "+ self.user_name + ", " + "Phone Number: " + self.phone_num + ", " + "Price (£): " + self.price + ", " + "Postcode:  " + self.post_code + ",  " + self.lat + " " + self.long + '\n')
 
         except FileNotFoundError:
             print("File not found")
@@ -24,10 +24,23 @@ class Games ():
     def append_a_game_to_file(self):
         try:
             with open('game_listings.txt', 'a') as opened_file:
-                opened_file.write(self.game_name + self.user_name + self.phone_num + self.price + self.location + self.lat + self.long + '\n')
+                opened_file.write(
+                    "Game Name: " + self.game_name + ", " + "User Name: " + self.user_name + ", " + "Phone Number: " + self.phone_num + ", " + "Price (£): " + self.price + ", " + "Postcode:  " + self.post_code + ",  " + self.lat + " " + self.long + '\n')
 
         except FileNotFoundError:
             print("File not found")
+
+    def open_read_file_using_with(file):
+        try:
+            with open("game_listings.txt", 'r') as open_file:
+                for line in open_file.readlines():
+                    print(line.rstrip('\n'))
+        except FileNotFoundError as errmsg:
+            print("File can not be found. Please check your input")
+            print(errmsg)
+            # raise
+        finally:
+            print('\n Execution complete')
 
     def get_post_code(input_post_code):
         try:

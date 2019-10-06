@@ -28,7 +28,7 @@ class ConnectMsS():
         return self.filter_query(query).fetchone()
 
     # Add a game to the existing database
-    def add_game_to_db(self, game_name, user_name, phone_num, price, location, lat_geo, long_geo):
+    def add_game_to_db(self, game_name, user_name, phone_num, price, location, lat_geo = " ", long_geo = " "):
             self.filter_query(f"INSERT INTO Games_to_list VALUES ('{game_name}', '{user_name}', '{phone_num}', '{price}', '{location}', '{lat_geo}', '{long_geo}')")
             self.conn_rep_db.commit()
 

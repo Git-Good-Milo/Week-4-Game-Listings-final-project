@@ -28,3 +28,58 @@ game3 = Games("Fifa 2020", "Vladimir Putin", "077-SOVIET-999", "50", "PA49 7UT")
 
 # Atempting User interface
 
+#game1.write_a_game_to_file()
+#game2.append_a_game_to_file()
+#game3.append_a_game_to_file()
+
+welcome_statement = print("Good morning and welcome to the best game listing website in the Universe! Here are your options:")
+
+while True:
+    option_1 = print("Option 1: Would you like to add a game to our ilustrious database?")
+    option_2 = print("Option 2: Would you like to view all games or just one?")
+    option_3 = print("Option 3: Would you like to delete a shoddy game from our database?")
+    option_4 = print("Option 4: Would you like to export a recipe to a .txt file?")
+    user_input = input("Enter your choice:  ")
+
+    if user_input == "1":
+        get_game_name = input("'Please enter your game name: '")
+        get_user_name = input("'Please enter your User name: '")
+        get_phone_num = input("'Please enter you phone number: '")
+        get_price = input("Please input the price of your game: ")
+        get_postCode = input("'Please enter your postcode: '")
+        user_game_list = conn_to_gl_db.add_game_to_db(get_game_name,get_user_name,get_phone_num, get_price, get_postCode)
+        print(f"{get_game_name} has been added to the database :)")
+        break
+
+    elif user_input == "2":
+        view_game_s = input("Would you like to view one game or all of them?")
+        if view_game_s == "1":
+            specific_id = input("Please enter the game ID you would like to view?")
+            view_by_title = conn_to_gl_db.title_search(specific_id)
+            print(view_by_title)
+        elif view_game_s == "all":
+            view_all = conn_to_gl_db.read_all_games()
+            print(view_all)
+        else:
+            print("Sorry, I didnt quite get that")
+            break
+
+    elif user_input == "3":
+        game_to_delete = input("Enter the game ID you would you like to delete: ")
+        delete_recipe = conn_to_gl_db.delete_game_from_db(game_to_delete)
+        print("That game has been deleted")
+
+    # elif user_input == "4":
+    #     input_recipe_for_txt = input("Which game would you like to export?")
+    #
+    #     if input_game_for_txt == user_recipe.recipe_name:
+    #         recipe_to_export = user_recipe.append_a_recipe_to_file()
+    #
+    #     elif input_recipe_for_txt == "I'd like to choose a recipe":
+    #         recipe_to_choose = input("Which recipe will it be then?")
+    #
+    #         if recipe_to_choose ==
+
+    elif user_input == "exit":
+        break
+
